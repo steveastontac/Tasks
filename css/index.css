@@ -1,0 +1,47 @@
+body
+{
+    color: white;
+    background-color: black;
+}
+
+div[id="d1"]
+{
+    background-color: #262626;
+    padding: 5px;
+    border-radius: 13px;
+}
+td
+{
+    border-bottom-style:solid;
+    border-width:0.1px;
+     padding: 4px;
+    width: 95%;
+}
+td:nth-of-type(2)
+{
+    border-style: hidden;
+}
+tr
+{
+}
+table
+{
+    width: 100%;
+}
+
+input[type="button"] 
+{
+    margin-top: 8px;
+    border-radius: 20px;
+    background-color: black;
+    border-style: outset;
+    color: white;
+    border-color: gray;
+    height: 30px;
+    width:60px;
+    font-family:fantasy;
+}
+
+
+/*checkbox designing , to use if moving completed tasks to another window fails */
+
