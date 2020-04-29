@@ -1,0 +1,51 @@
+<html>
+<head>
+<title>Tasks</title>
+    <script type="text/javascript" src="js/j2.js"></script>
+<link rel=stylesheet type="text/css" href="css/index.css">
+</head>
+<body>
+
+	<h3>TO DO :</h3>
+
+	<div id="menubutton" onclick="showmenu()">
+	<img src="img/menu.png" >
+	</div>
+	<div class="menuc" id="menui">
+		<div id="completed" onclick="showcomp()">Completed</div>
+		<div id="Incomplete" onclick="showincomp()">Incomplete</div>
+		<div id="timer" onclick="showtimer()">Timer </div>
+		<div id="menadd" onclick="f1()">ADD</div>
+	</div>
+	<div id="comptasks" class="comptasks" onclick="closecomp()">
+		<center>
+		<table id="t2">
+	    </table>
+		</center>
+	</div>
+	
+	<div id="incomptasks" class="incomptasks" onclick="closeincomp()">
+		<center>
+		<table id="t3">
+		</table>
+		</center>
+	</div>
+	
+    <div id="d1">
+    <center>
+    <table id="t1">
+    </table>            
+	</center>
+    </div>
+	<center> <input type="button" id="b1" value="ADD"></center>
+
+	<div id="disptimer" onclick="showtimer()" >
+		<p>whadup</p>
+</div>
+
+
+</body>
+    <!--<script type="text/javascript" src="cordova.js"> </script>-->
+<script type="text/javascript" src="js/index.js"></script>
+
+</html>

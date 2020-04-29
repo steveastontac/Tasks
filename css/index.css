@@ -1,0 +1,180 @@
+body
+{
+    color: white;
+    background-color: black;
+	
+}
+
+
+
+h3
+{
+	background-color:#242424;
+	text-align:left;
+	margin: 4px;
+	padding: 4px;
+	font-size: 25px;
+}
+
+div[id="d1"]
+{
+    background-color: #141414;
+    padding: 5px;
+    border-radius: 13px;
+}
+td
+{
+    border-bottom-style:solid;
+    border-width:0.1px;
+    border-color: darkgray;
+     padding: 4px;
+    width: 95%;
+	font-size: 20px;
+}
+td:nth-of-type(2)
+{
+    border-style: hidden;
+}
+td:nth-of-type(3)
+{
+    border-style: hidden;
+}
+
+td[id="c2cc"]
+{
+    border-bottom-style:solid;
+    border-width:0.1px;
+    border-color: darkgray;
+     padding: 4px;
+    width: 70%;
+	font-size: 20px;
+}
+td[id="c2bc"]
+{
+   background-color:#1d1d1d;
+	color:#ffffff;
+	font-family: monospace;
+}
+
+tr
+{
+}
+table
+{
+    width: 100%;
+}
+input[type="button"]
+{
+	border-radius: 20px;
+	height: 25px;
+	 background-color: dimgray;
+    border-style: outset;
+    color: #c4c4c4;
+    border-color: gray;
+}
+
+
+div[id="menubutton"]
+{
+	background-color:#8d8d8d;
+	background-blend-mode:color-dodge;
+	height: 32px;
+	width: 32px;
+	position: fixed;
+	top:11px;
+	right: 15px;
+	
+}
+div[id="completed"]
+{
+	padding: 9px;
+	text-align: center;
+}
+div[id="menadd"]
+{
+	padding: 9px;
+	text-align: center;
+}
+div[id="Incomplete"]
+{
+	padding: 9px;
+	text-align: center;
+}
+div[id="timer"]
+{
+	padding: 9px;
+	text-align: center;
+}
+div[id="menadd"]:active
+{
+	padding: 9px;
+	background-color: dimgray;
+	text-align: center;
+}
+div[id="timer"]:active
+{
+	padding: 9px;
+	text-align: center;
+		background-color: dimgray;
+}
+div[id="completed"]:active
+{
+	padding: 9px;
+	text-align: center;
+	background-color: dimgray;
+}
+div[id="Incomplete"]:active
+{
+	padding: 9px;
+	text-align: center;
+		background-color: dimgray;
+}
+
+.menuc
+{
+	position: fixed;
+	top:43px;
+	right: 11px;
+	display: none;
+	background-color: #303030;
+}
+.comptasks
+{
+	
+	top: 50px;
+	background-color: #262626;
+    padding: 5px;
+    border-radius: 13px;
+}
+img
+{
+	width: 100%;
+}
+
+input[id="b1"] 
+{
+    margin-top: 8px;
+    border-radius: 20px;
+    border-style: outset;
+    color: #ffffff;
+    border-color: gray;
+    height: 30px;
+    width:60px;
+    font-family:fantasy;
+    background-color:black;
+}
+
+div[id="disptimer"]
+{
+	position: fixed;
+	top: 16px;
+	text-align: center;
+	right: 52px;
+	width: 40%;
+	display: block;
+	background-color: #002105;
+	color: #0afc00;
+	font-family: monospace;
+}
+/*checkbox designing , to use if moving completed tasks to another window fails */
+
