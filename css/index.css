@@ -69,8 +69,10 @@ input[type="button"]
 	height: 25px;
 	 background-color: dimgray;
     border-style: outset;
-    color: #c4c4c4;
+    color: #f0f0f0;
     border-color: gray;
+	font-size:10px;
+	
 }
 
 
@@ -105,6 +107,11 @@ div[id="timer"]
 	padding: 9px;
 	text-align: center;
 }
+div[id="resetimer"]
+{
+	padding: 9px;
+	text-align: center;
+}
 div[id="menadd"]:active
 {
 	padding: 9px;
@@ -112,6 +119,11 @@ div[id="menadd"]:active
 	text-align: center;
 }
 div[id="timer"]:active
+{
+	padding: 9px;
+	text-align: center;
+		background-color: dimgray;
+}div[id="resetimer"]:active
 {
 	padding: 9px;
 	text-align: center;
@@ -161,19 +173,34 @@ input[id="b1"]
     height: 30px;
     width:60px;
     font-family:fantasy;
+    background-color:#292929;
+}
+input[id="b1"]:focus
+{
+    margin-top: 8px;
+    border-radius: 20px;
+    border-style: outset;
+    color: #ffffff;
+    border-color: gray;
+    height: 30px;
+    width:60px;
+    font-family:fantasy;
     background-color:black;
+	outline: none;
 }
 
 div[id="disptimer"]
 {
 	position: fixed;
-	top: 16px;
+	top: 15px;
 	text-align: center;
 	right: 52px;
 	width: 40%;
 	display: block;
 	background-color: #002105;
 	color: #0afc00;
+	padding: 3px;
+	font-size: 14px;
 	font-family: monospace;
 }
 /*checkbox designing , to use if moving completed tasks to another window fails */

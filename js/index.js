@@ -1,7 +1,7 @@
 //GLOBAL
 var db=openDatabase('taskdetail','1.0',"Task DB",3*1024*1024);
-
-
+var totime=0;
+var timo=0;
 //TRIGGERS
 document.getElementById("b1").addEventListener("click",f1);
 window.onload=loadapp();
@@ -27,7 +27,7 @@ function f1()
 		buton.setAttribute("id",ids);
 		var startnow="startnow('"+ids+"')";
 		buton.setAttribute("onclick",startnow);
-		buton.setAttribute("value","🕛");
+		buton.setAttribute("value","start");
 		c3.appendChild(buton);
       c1.innerHTML=resp;
     var col1id='cc'+n;
@@ -139,7 +139,7 @@ function loadapp()
 		buton.setAttribute("id",ids);
 		var startnow="startnow('"+ids+"')";
 		buton.setAttribute("onclick",startnow);
-		buton.setAttribute("value","🕛");
+		buton.setAttribute("value","start");
 		c3.appendChild(buton);
       c1.innerHTML=task;
     var col1id='cc'+n;
@@ -323,14 +323,16 @@ function closeincomp()
 
 function showtimer()
 {
-	var timo=Number(window.prompt("Enter Time(0 for unlimited) "))*1000*60;
+	document.getElementById("menui").style.display='none';
+	
+	timo=Number(window.prompt("Enter Time(0 for unlimited) "))*1000*60;
 	document.getElementById("d1").style.display='block';
 	document.getElementById("comptasks").style.display='none';
 	document.getElementById("incomptasks").style.display='none';
 	document.getElementById("disptimer").style.display='block';
 
 	var tym=0;
-	var totime=0;
+	totime=0;
 	var ss=setInterval
 	(
 	function dispt()
@@ -349,16 +351,22 @@ function showtimer()
 		totime=totime+1000;
 		document.getElementById("disptimer").innerHTML=pad2(d)+":"+pad2(h)+":"+pad2(m)+":"+pad2(s);
 		
-		if(totime==timo)
+		if(totime==timo||timo==-1)
 			clearInterval(ss);
 			}
 	,
-	100
+	1000
 	);
+	timo=0;
 }
 
 function pad2(number) {
    
      return (number < 10 ? '0' : '') + number
    
+}
+
+function resetimer()
+{
+	timo=-1;
 }
