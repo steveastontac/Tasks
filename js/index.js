@@ -1,7 +1,7 @@
 //GLOBAL
 var db=openDatabase('taskdetail','1.0',"Task DB",3*1024*1024);
 var totime=0;
-var timo=0;
+var timo=-1;
 //TRIGGERS
 document.getElementById("b1").addEventListener("click",f1);
 window.onload=loadapp();
@@ -18,9 +18,9 @@ function f1()
       var r=ta1.insertRow(-1);
 		var n=$('#t1 tr').length;
         r.id='rc'+n;
-      var c1=r.insertCell(0);
-      var c2=r.insertCell(1);
-	  var c3=r.insertCell(2);
+        var c1=r.insertCell(0);
+        var c2=r.insertCell(1);
+	    var c3=r.insertCell(2);
 		var ids="sc"+n;
 		var buton=document.createElement("input");
 		buton.type="button";
@@ -76,10 +76,10 @@ function f1()
 //	);
 //}
 
-function showtimer()
-{
-	
-}
+//function showtimer()
+//{
+//	
+//}
 
 function f2(id)
 {
@@ -123,7 +123,6 @@ function loadapp()
                 for(var i=0;i<rs.rows.length;i++)
                 {
                     var cur_row=rs.rows.item(i);
-                    
                     var task=cur_row['task'];
                     var ch=cur_row['ch'];
     var ta1=document.getElementById("t1");
@@ -204,7 +203,8 @@ function showmenu()
 function showcomp()
 {
 document.getElementById("d1").style.display='none';	
-document.getElementById("menui").style.display='none';document.getElementById("comptasks").style.display='block';
+document.getElementById("menui").style.display='none';
+document.getElementById("comptasks").style.display='block';
 	db.transaction(
 		
 	function(tx)
@@ -323,14 +323,16 @@ function closeincomp()
 
 function showtimer()
 {
-	document.getElementById("menui").style.display='none';
+    document.getElementById("menui").style.display='none';
 	
+    if(timo==-1)
+        {
 	timo=Number(window.prompt("Enter Time(0 for unlimited) "))*1000*60;
 	document.getElementById("d1").style.display='block';
 	document.getElementById("comptasks").style.display='none';
 	document.getElementById("incomptasks").style.display='none';
 	document.getElementById("disptimer").style.display='block';
-
+    //stop goin to home page when menu is clicked ?
 	var tym=0;
 	totime=0;
 	var ss=setInterval
@@ -350,16 +352,21 @@ function showtimer()
 
 		totime=totime+1000;
 		document.getElementById("disptimer").innerHTML=pad2(d)+":"+pad2(h)+":"+pad2(m)+":"+pad2(s);
+        // try using pad2 in showcomp()
 		
 		if(totime==timo||timo==-1)
+            {
 			clearInterval(ss);
-			}
+            timo=-1;
+            }
+    }
 	,
 	1000
 	);
-	timo=0;
+//	timo=0;
 }
-
+  
+}
 function pad2(number) {
    
      return (number < 10 ? '0' : '') + number
