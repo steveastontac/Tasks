@@ -1,7 +1,8 @@
 //GLOBAL
-var db=openDatabase('taskdetail','1.0',"Task DB",3*1024*1024);
+var db=openDatabase('taskdetail','1.0',"Task DB",4*1024*1024);
 var totime=0;
 var timo=-1;
+var gaptodisp=0;
 //TRIGGERS
 document.getElementById("b1").addEventListener("click",f1);
 window.onload=loadapp();
@@ -53,8 +54,8 @@ function f1()
         (
             function(tx)
             {
-                tx.executeSql('create table if not exists taskdetails ( task , ch , tym )');
-                tx.executeSql('insert into taskdetails values (?,?,?)',[a,b,starttime]);
+                tx.executeSql('create table if not exists taskdetails ( task , ch , tym , comp )');
+                tx.executeSql('insert into taskdetails ( task , ch , tym ) values (?,?,?)',[a,b,starttime]);
             }
         );
     }
@@ -94,11 +95,11 @@ function f2(id)
         function(tx)
         {
             tx.executeSql('update taskdetails set ch=? where rowid=?',[stts,sqrid]);
-			tx.executeSql('update taskdetails set tym=?-tym where rowid=?',[d.getTime(),sqrid]);
+			tx.executeSql('update taskdetails set tym=?-tym , comp=? where rowid=?',[d.getTime(),d.getTime(),sqrid]);
         }
     );
 	var btn = document.getElementById(id);
-	if( stts == "true")
+	if( stts == "true" )
 		btn.setAttribute('checked',stts);
 	else
 		btn.setAttribute('unchecked',stts);
@@ -122,9 +123,15 @@ function loadapp()
             {
                 for(var i=0;i<rs.rows.length;i++)
                 {
+                    var d=new Date();
                     var cur_row=rs.rows.item(i);
                     var task=cur_row['task'];
                     var ch=cur_row['ch'];
+                    var at=new Date(cur_row['comp']);
+                    var tym= - at.getTime() + d.getTime();
+                    var gap = Math.floor(tym/(1000*60*60*24));
+                 if(gap<=gaptodisp)
+                     {
     var ta1=document.getElementById("t1");
       var r=ta1.insertRow(-1);
 		var n = $('#t1 tr').length;
@@ -157,7 +164,7 @@ function loadapp()
                     
     c2.appendChild(btn);
                     
-                }
+                }}
             }
             );
         }
@@ -171,7 +178,7 @@ function startnow(id)
 	(
 		function(tx)
 		{
-			tx.executeSql("select * from taskdetails",[],function(tx,rs)
+			tx.executeSql("select task,ch,tym from taskdetails",[],function(tx,rs)
 						 {
 				var row1=rs.rows.item(id[2]-1);
 			 
@@ -211,7 +218,7 @@ document.getElementById("comptasks").style.display='block';
 	{
 	 tx.executeSql
             (
-            'select * from taskdetails',[],
+            'select task,tym,ch from taskdetails',[],
             function(tx,rs)
             {
                 for(var i=0;i<rs.rows.length;i++)
@@ -276,7 +283,7 @@ document.getElementById("incomptasks").style.display='block';
 	{
 	 tx.executeSql
             (
-            'select * from taskdetails',[],
+            'select task,tym,ch from taskdetails',[],
             function(tx,rs)
             {
                 for(var i=0;i<rs.rows.length;i++)
@@ -376,4 +383,13 @@ function pad2(number) {
 function resetimer()
 {
 	timo=-1;
+}
+
+function changegap()
+{
+    gaptodisp=window.prompt(" Enter the number of days upto which you want the tasks to display (restart) ")
+    document.getElementById("menui").style.display='none';
+    $("#t1 tr").remove();
+    loadapp();
+    
 }

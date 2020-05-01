@@ -107,7 +107,7 @@ div[id="timer"]
 	padding: 9px;
 	text-align: center;
 }
-div[id="resetimer"]
+div[id="resetimer"],div[id="changegap"]
 {
 	padding: 9px;
 	text-align: center;
@@ -141,7 +141,12 @@ div[id="Incomplete"]:active
 	text-align: center;
 		background-color: dimgray;
 }
-
+div[id="changegap"]:active
+{
+	padding: 9px;
+	text-align: center;
+		background-color: dimgray;
+}
 .menuc
 {
 	position: fixed;
