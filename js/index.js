@@ -2,7 +2,7 @@
 var db=openDatabase('taskdetail','1.0',"Task DB",4*1024*1024);
 var totime=0;
 var timo=-1;
-var gaptodisp=0;
+var gaptodisp=Number(localStorage.getItem("gapt"));
 //TRIGGERS
 document.getElementById("b1").addEventListener("click",f1);
 window.onload=loadapp();
@@ -130,7 +130,8 @@ function loadapp()
                     var at=new Date(cur_row['comp']);
                     var tym= - at.getTime() + d.getTime();
                     var gap = Math.floor(tym/(1000*60*60*24));
-                 if((gap<=gaptodisp)&&(ch=="true"))
+                   
+                 if((gap>gaptodisp)&&(ch=="true"))
                      {continue;}
     var ta1=document.getElementById("t1");
       var r=ta1.insertRow(-1);
@@ -391,6 +392,7 @@ function changegap()
 //    alert(gaptodisp);
     document.getElementById("menui").style.display='none';
     $("#t1 tr").remove();
+    localStorage
+    .setItem("gapt",gaptodisp);
     loadapp();
-    
 }
