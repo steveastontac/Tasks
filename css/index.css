@@ -151,7 +151,7 @@ div[id="changegap"]:active
 {
 	position: fixed;
 	top:43px;
-	right: 11px;
+	right: 15px;
 	display: none;
 	background-color: #303030;
 }

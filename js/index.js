@@ -130,8 +130,8 @@ function loadapp()
                     var at=new Date(cur_row['comp']);
                     var tym= - at.getTime() + d.getTime();
                     var gap = Math.floor(tym/(1000*60*60*24));
-                 if(gap<=gaptodisp)
-                     {
+                 if((gap<=gaptodisp)&&(ch=="true"))
+                     {continue;}
     var ta1=document.getElementById("t1");
       var r=ta1.insertRow(-1);
 		var n = $('#t1 tr').length;
@@ -164,7 +164,7 @@ function loadapp()
                     
     c2.appendChild(btn);
                     
-                }}
+                }
             }
             );
         }
@@ -387,7 +387,8 @@ function resetimer()
 
 function changegap()
 {
-    gaptodisp=window.prompt(" Enter the number of days upto which you want the tasks to display (restart) ")
+    gaptodisp=Number(window.prompt(" Enter the number of days upto which you want the tasks to display (restart) "))-1;
+//    alert(gaptodisp);
     document.getElementById("menui").style.display='none';
     $("#t1 tr").remove();
     loadapp();
