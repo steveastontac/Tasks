@@ -108,7 +108,8 @@ function f2(id)
 
 function loadapp()
 {   
-	document.getElementById("comptasks").style.display='none';
+	gaptodisp=Number(localStorage.getItem("gapt"));
+    document.getElementById("comptasks").style.display='none';
 	document.getElementById("disptimer").style.display='none';
 	document.getElementById("menui").style.display='none';
     db.transaction
