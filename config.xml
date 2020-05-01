@@ -2,7 +2,15 @@
 <widget id="com.steve.tasks" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Tasks</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        An App to record your tasks and time .
+        
+        The time starts getting rercorded during insertion of the task by default . You can start the task anytime again by pressing the start button . This will work when the task is not checked .
+        
+        In the completed field , it shows all completed tasks with the time of completion . 
+        
+        In the incomplete field , it shows incomplete tasks but you cannot interact with this page( next version might show task entry date ) .
+        
+        etc.
     </description>
     <author email="dev@cordova.apache.org" href="http://cordova.io">
         Apache Cordova Team
