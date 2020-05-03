@@ -4,6 +4,7 @@ var totime=0;
 var timo=-1;
 var gaptodisp=0;
 var totasks=0;
+localStorage.setItem("totasks",1);
 //TRIGGERS
 document.getElementById("b1").addEventListener("click",f1);
 window.onload=loadapp();
@@ -204,6 +205,8 @@ function loadapp()
 
 function startnow(id)
 {
+    var idn=id.length;
+	var sqrid=id.slice(2,idn);
 	var d=new Date();
 	db.transaction
 	(
@@ -211,7 +214,7 @@ function startnow(id)
 		{
 			tx.executeSql("select task,ch,tym from taskdetails",[],function(tx,rs)
 						 {
-				var row1=rs.rows.item(id[2]-1);
+				var row1=rs.rows.item(sqrid-1);
 			 
 			if(row1['ch']=="false")
 		{
