@@ -3,6 +3,7 @@ var db=openDatabase('taskdetail','1.0',"Task DB",4*1024*1024);
 var totime=0;
 var timo=-1;
 var gaptodisp=0;
+localStorage.setItem("totasks",1);
 //TRIGGERS
 document.getElementById("b1").addEventListener("click",f1);
 window.onload=loadapp();
@@ -17,7 +18,7 @@ function f1()
     {
       var ta1=document.getElementById("t1");
       var r=ta1.insertRow(-1);
-		var n=$('#t1 tr').length;
+		var n=Number(localStorage.getItem("totasks"));
         r.id='rc'+n;
         var c1=r.insertCell(0);
         var c2=r.insertCell(1);
@@ -59,6 +60,8 @@ function f1()
             }
         );
     }
+    
+    localStorage.setItem("totasks",n+1);
         
 }
 
@@ -84,10 +87,14 @@ function f1()
 
 function f2(id)
 {
+
+    var idn=id.length;
+    alert(idn);
+	var sqrid=id.slice(1,idn);
+    alert(sqrid);
     var cbid="#"+id;
     var c1id="c"+id;
-	var sqrid=id[1];
-	var d = new Date();
+    var d = new Date();
 	
 	var stts=$(cbid).is(':checked');
     db.transaction
