@@ -3,16 +3,32 @@ var db=openDatabase('taskdetail','1.0',"Task DB",4*1024*1024);
 var totime=0;
 var timo=-1;
 var gaptodisp=0;
-localStorage.setItem("totasks",1);
+var totasks=0;
 //TRIGGERS
 document.getElementById("b1").addEventListener("click",f1);
 window.onload=loadapp();
 
 //FUNCTIONS
+function getasknos()
+{
+    db.transaction(
+    function(tx)
+        {
+            tx.executeSql
+            (
+            'select * from taskdetails',[],
+            function(tx,rs)
+            {
+               totasks=Number(rs.rows.length)+1;
+                localStorage.setItem("totasks",totasks);
+            }
+            );
+        }
+        );
+}
 function f1()
 {
    var resp=window.prompt("Enter task");
- 
     len=resp.length;
     if(len != 0)
     {
@@ -89,9 +105,7 @@ function f2(id)
 {
 
     var idn=id.length;
-    alert(idn);
 	var sqrid=id.slice(1,idn);
-    alert(sqrid);
     var cbid="#"+id;
     var c1id="c"+id;
     var d = new Date();
@@ -116,7 +130,7 @@ function f2(id)
 function loadapp()
 {   
 	gaptodisp=Number(localStorage.getItem("gapt"));
-    document.getElementById("comptasks").style.display='none';
+   getasknos(); document.getElementById("comptasks").style.display='none';
 	document.getElementById("disptimer").style.display='none';
 	document.getElementById("menui").style.display='none';
     db.transaction
