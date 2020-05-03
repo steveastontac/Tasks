@@ -2,7 +2,7 @@
 var db=openDatabase('taskdetail','1.0',"Task DB",4*1024*1024);
 var totime=0;
 var timo=-1;
-var gaptodisp=Number(localStorage.getItem("gapt"));
+var gaptodisp=0;
 //TRIGGERS
 document.getElementById("b1").addEventListener("click",f1);
 window.onload=loadapp();
@@ -125,23 +125,31 @@ function loadapp()
                 for(var i=0;i<rs.rows.length;i++)
                 {
                     var d=new Date();
+                    var rd=i+1;
                     var cur_row=rs.rows.item(i);
                     var task=cur_row['task'];
                     var ch=cur_row['ch'];
                     var at=new Date(cur_row['comp']);
+                    if(!(at.getTime()==0))
+                    {
                     var tym= - at.getTime() + d.getTime();
                     var gap = Math.floor(tym/(1000*60*60*24));
-                   
+                    }
+                    else 
+                    {
+                        gap = -1;
+                    }
+//                    alert(gap);
                  if((gap>gaptodisp)&&(ch=="true"))
                      {continue;}
     var ta1=document.getElementById("t1");
       var r=ta1.insertRow(-1);
-		var n = $('#t1 tr').length;
-        r.id='rc'+n;
+
+        r.id='rc'+rd;
       var c1=r.insertCell(0);
       var c2=r.insertCell(1);
 	  var c3=r.insertCell(2);
-	var ids="sc"+n;
+	var ids="sc"+rd;
 		var buton=document.createElement("input");
 		buton.type="button";
 		buton.setAttribute("id",ids);
@@ -150,12 +158,12 @@ function loadapp()
 		buton.setAttribute("value","start");
 		c3.appendChild(buton);
       c1.innerHTML=task;
-    var col1id='cc'+n;
+    var col1id='cc'+rd;
 	c1.id=col1id;
       var btn = document.createElement('input');
       btn.type="checkbox";
       btn.setAttribute("name","checkbox");
-      var cbxid='c'+n;
+      var cbxid='c'+rd;
       btn.setAttribute("id",cbxid);
         onclickval='f2("'+cbxid+'")';
       btn.setAttribute("onclick",onclickval);
@@ -260,7 +268,7 @@ tym = tym - (h*(1000*60*60));
 var m = Math.floor(tym/(1000*60));
 tym = tym - (m*(1000*60));
 var s = Math.floor(tym/(1000));
-ff.innerHTML=d+":"+h+":"+m+":"+s;
+ff.innerHTML=pad2(d)+":"+pad2(h)+":"+pad2(m)+":"+pad2(s);
 					}
 				}
 			}
@@ -389,7 +397,7 @@ function resetimer()
 
 function changegap()
 {
-    gaptodisp=Number(window.prompt(" Enter the number of days upto which you want the tasks to display (restart) "))-1;
+    gaptodisp=Number(window.prompt(" Enter the number of days upto which you want the tasks to display"))-1;
 //    alert(gaptodisp);
     document.getElementById("menui").style.display='none';
     $("#t1 tr").remove();
