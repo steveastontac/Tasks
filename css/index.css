@@ -90,27 +90,44 @@ div[id="menubutton"]
 div[id="completed"]
 {
 	padding: 9px;
+    border-bottom-style: solid;
 	text-align: center;
 }
 div[id="menadd"]
 {
 	padding: 9px;
+        border-bottom-style: groove;
 	text-align: center;
 }
 div[id="Incomplete"]
 {
 	padding: 9px;
+        border-bottom-style: groove;
 	text-align: center;
 }
 div[id="timer"]
 {
 	padding: 9px;
+        border-bottom-style: groove;
 	text-align: center;
 }
 div[id="resetimer"],div[id="changegap"]
 {
 	padding: 9px;
+        border-bottom-style: groove;
 	text-align: center;
+}
+
+div[id="Report"]
+{
+    padding: 9px;
+    text-align: center;
+}
+div[id="Report"]:active
+{
+    padding: 9px;
+    text-align: center;
+    background-color: dimgray;
 }
 div[id="menadd"]:active
 {
@@ -150,7 +167,7 @@ div[id="changegap"]:active
 .menuc
 {
 	position: fixed;
-	top:43px;
+	top:48px;
 	right: 15px;
 	display: none;
 	background-color: #303030;

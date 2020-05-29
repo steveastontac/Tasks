@@ -429,3 +429,38 @@ function changegap()
     .setItem("gapt",gaptodisp);
     loadapp();
 }
+
+
+//report the time spent on a task with the same starting name (first word)
+
+function report()
+{
+    db.transaction
+    (
+       function(tx)
+        {
+            tx.executeSql
+            (
+                "select * from taskdetails",
+                [],
+                function(tx,rs)
+                {
+                    var tarray=[];
+                    var n = rs.rows.length;
+                    for( var i=0;i<n;i++)
+                    {
+//                        var cur=rs.rows.item(i);
+//                        for( var j=i+1 ; j<n ; j++)
+//                        {
+//                            if(tarray[i]==tarray[j])
+//                            {
+//                                continue;
+//                            }
+//                            tarray[k]=
+//                        }
+                    }
+                }
+            );
+        }
+    );
+}
