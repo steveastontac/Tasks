@@ -90,24 +90,29 @@ div[id="menubutton"]
 div[id="completed"]
 {
 	padding: 9px;
-    border-bottom-style: solid;
+    border-bottom-style: groove;
+    border-width: 1px;
 	text-align: center;
 }
 div[id="menadd"]
 {
 	padding: 9px;
         border-bottom-style: groove;
+        border-width: 1px;
+
 	text-align: center;
 }
 div[id="Incomplete"]
 {
 	padding: 9px;
-        border-bottom-style: groove;
+    border-width: 1px;
+    border-bottom-style: groove;
 	text-align: center;
 }
 div[id="timer"]
 {
 	padding: 9px;
+        border-width: 1px;
         border-bottom-style: groove;
 	text-align: center;
 }
@@ -116,6 +121,7 @@ div[id="resetimer"],div[id="changegap"]
 	padding: 9px;
         border-bottom-style: groove;
 	text-align: center;
+        border-width: 1px;
 }
 
 div[id="Report"]

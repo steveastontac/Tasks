@@ -208,6 +208,8 @@ function startnow(id)
     var idn=id.length;
 	var sqrid=id.slice(2,idn);
 	var d=new Date();
+    document.getElementById(id).style.backgroundColor="yellowgreen";
+     document.getElementById(id).style.color="black";
 	db.transaction
 	(
 		function(tx)
